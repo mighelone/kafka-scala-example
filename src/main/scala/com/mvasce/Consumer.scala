@@ -66,32 +66,9 @@ object Consumer {
     props
   }
   
-  /**
-    * Event data type
-    *
-    * @param timestamp : timestamp string using iso
-    * @param event_type : type of event
-    * @param match_id : ID of the match
-    */
+  
   
 
-  implicit val eventFormat = Json.format[Event]
-
-
-  class EventDeserializer extends Deserializer[Event] {
-    override def deserialize(topic: String, bytes: Array[Byte]): Event = {
-      val json: JsValue = Json.parse(bytes)
-      Json.fromJson[Event](json).get
-    }
-
-    override def configure(configs: util.Map[String, _], isKey: Boolean):
-    Unit = {
-      // nothing to do
-    }
-
-    override def close(): Unit = {
-      //nothing to do
-    }
-  }
+  
 
 }
