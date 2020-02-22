@@ -73,19 +73,7 @@ object Consumer {
     * @param event_type : type of event
     * @param match_id : ID of the match
     */
-  case class Event(timestamp: String, event_type: String, match_id: Int)
-  {
-    val ts: DateTime = DateTime.parse(timestamp)
-
-    /**
-      * Get the timestamp in milliseconds
-      *
-      * @return timestamp in Unix milliseconds
-      */
-    def getCreationTime(): Long = {
-      ts.getMillis
-    }
-  }
+  
 
   implicit val eventFormat = Json.format[Event]
 
