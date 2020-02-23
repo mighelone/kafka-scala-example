@@ -69,21 +69,19 @@ object Event {
   }
 }
 
-
 object Test {
-    def main(args: Array[String]): Unit = {
-        val event = Event(10, "kickoff", DateTime.now())
-        println(event)
-        
-        val serializer = new Event.EventSerializer
-        val deserializer = new Event.EventDeserializer
+  def main(args: Array[String]): Unit = {
+    val event = Event(10, "kickoff", DateTime.now())
+    println(event)
 
-        val event_byte: Array[Byte] = serializer.serialize("test", event)
-        
-        val result = deserializer.deserialize("test", event_byte)
+    val serializer = new Event.EventSerializer
+    val deserializer = new Event.EventDeserializer
 
-        println(result)
+    val event_byte: Array[Byte] = serializer.serialize("test", event)
 
+    val result = deserializer.deserialize("test", event_byte)
 
-    }
+    println(result)
+
+  }
 }

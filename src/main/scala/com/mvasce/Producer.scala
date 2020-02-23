@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory
 
 import com.mvasce.Consumer.{BOOTSTRAP_SERVER, TOPIC}
 
-
 object Producer {
 
   val logger = LoggerFactory.getLogger("producer")
@@ -26,7 +25,10 @@ object Producer {
 
     val props = new Properties()
     props.put("bootstrap.servers", bootstrap_server)
-    props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+    props.put(
+      "key.serializer",
+      "org.apache.kafka.common.serialization.StringSerializer"
+    )
     props.put("value.serializer", classOf[Event.EventSerializer])
 
     val producer = new KafkaProducer[String, Event](props)
@@ -45,7 +47,7 @@ object Producer {
     while (keepRunning) {
       val event: Event = generator.get
       logger.info(s"Sending message $event")
-      
+
       val record = new ProducerRecord(topic, event.event_type, event)
       producer.send(record)
       Thread.sleep(100)
@@ -54,4 +56,3 @@ object Producer {
   }
 
 }
-
