@@ -21,5 +21,5 @@
 ## Run consumer
 
 ```console
-java -cp ./target/scala-2.12/kafkaConsumer-assembly-0.1.jar com.mvasce.Producer
+> java -cp ./target/scala-2.12/kafkaConsumer-assembly-0.1.jar com.mvasce.Producer
 ```
