@@ -1,6 +1,8 @@
 package com.mvasce
 
 import scala.util.Random
+import org.joda.time.DateTime
+import java.sql.Date
 
 case class EventGenerator()
 {
@@ -12,7 +14,7 @@ case class EventGenerator()
     
     def get(): Event = {
         val event = event_types(r.nextInt(event_types.length))
-        Event(r.nextInt(delte_id) + min_id, event)
+        Event(r.nextInt(delte_id) + min_id, event, DateTime.now())
     }
 
 }

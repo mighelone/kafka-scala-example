@@ -27,7 +27,7 @@ object Producer {
     val props = new Properties()
     props.put("bootstrap.servers", bootstrap_server)
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    props.put("value.serializer", classOf[EventSerializer])
+    props.put("value.serializer", classOf[Event.EventSerializer])
 
     val producer = new KafkaProducer[String, Event](props)
 
